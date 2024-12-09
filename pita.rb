@@ -7,6 +7,7 @@ def _pita(n)
         for i in 1 ..n do
             n2 = n - i*i
             if n2 < 0
+                break
                 #return []
             end
             for j in 1 ..n2 do
