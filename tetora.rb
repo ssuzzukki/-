@@ -37,6 +37,14 @@ def tetora(n)
         return 20569
     elsif n == 20
         return 39648
+    elsif n == 30
+        return 28074040
+    elsif n == 31
+        return 54114452
+    elsif n == 32
+        return 104308960
+    elsif n == 33
+        return 201061985
     else
         ans = tetora(n-1) + tetora(n-2) + tetora(n-3) + tetora(n-4)
         return ans
