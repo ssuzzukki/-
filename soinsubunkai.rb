@@ -76,7 +76,16 @@ loop do
     puts "入力した数の素因数分解、平方根、n進表現を求めます"
     puts "平方根は値が大きすぎるとうまく表示されない可能性があります。"
     puts "2以上の自然数を入力してください"
-    orig_number = gets.to_i
+    orig_number = gets.chomp
+    if orig_number == "exit"
+        puts "bye!"
+        break
+    elsif orig_number =~ /\d+/
+        orig_number = orig_number.to_i
+    else
+        puts "2以上の自然数を入力してください"
+        next
+    end
     if orig_number < 2 or orig_number % 1 != 0
         puts "2以上の自然数を入力してください"
         next
