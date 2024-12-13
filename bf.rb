@@ -1,3 +1,5 @@
+#ruby bf.rb <code.bf>
+
 $pointer = 0
 $memory =[0]
 $commandpointer = 0
