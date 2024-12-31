@@ -8,6 +8,14 @@ def _pluses(n)
     return plus
 end
 
+def _minuses(n)
+    minus = ""
+    for i in 1..n
+        minus = minus + "+"
+    end
+    return minus
+end
+
 def _kakezan(n)
     if n <= 10
         return _pluses(n)
@@ -27,10 +35,6 @@ def _kakezan(n)
         return ">" + _pluses(5) + "[<" + _pluses(n/5) + ">-]<"
     elsif n % 4 == 0
         return ">" + _pluses(4) + "[<" + _pluses(n/4) + ">-]<"
-    #elsif n % 3 == 0
-        #return ">" + _pluses(3) + "[<" + _pluses(n/3) + ">-]<"
-    #elsif n % 2 == 0
-        #return ">" + _pluses(2) + "[<" + _pluses(n/2) + ">-]<"
     else
         return "+" + _kakezan(n-1)
     end
@@ -57,23 +61,21 @@ ascii_codes = sent.unpack("U*")
 #p ascii_codes
 befornum = 0
 ascii_codes.each do |num|
-    if befornum == num
-        if aftercode[-1] ==">"
-            aftercode[-1] = ""
-        end
-        aftercode = aftercode + "."
-    else
-        if aftercode[-1] != ">"
-            aftercode = aftercode + ">"
-        end
-        aftercode = aftercode + _kakezan(num) + "."
+    if aftercode[-1] ==">"
+        aftercode[-1] = ""
     end
+    if num >= befornum
+        aftercode = aftercode + _kakezan(num-befornum) + "."
+    else
+        aftercode = aftercode + ">" + _kakezan(num) + "."
+    end
+
     befornum = num
 end
 
-if aftercode[0] == ">"
-    aftercode[0] = ""
-end
+#if aftercode[0] == ">"
+    #aftercode[0] = ""
+#end
 if aftercode[-1] ==">"
     aftercode[-1] = ""
 end
